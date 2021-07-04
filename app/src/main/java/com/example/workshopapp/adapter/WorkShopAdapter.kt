@@ -12,21 +12,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.workshopapp.model.WorkShopModel
 import com.example.workshopapp.R
-//import org.greenrobot.eventbus.EventBus
 
 
 private class WorkShopDiffUtilCallback() : DiffUtil.ItemCallback<WorkShopModel>() {
 
     override fun areItemsTheSame(
-        oldItem: WorkShopModel,
-        newItem: WorkShopModel
+            oldItem: WorkShopModel,
+            newItem: WorkShopModel
     ): Boolean {
         return oldItem.hashCode() == newItem.hashCode()
     }
 
     override fun areContentsTheSame(
-        oldItem: WorkShopModel,
-        newItem: WorkShopModel
+            oldItem: WorkShopModel,
+            newItem: WorkShopModel
     ): Boolean {
         return oldItem.compareTo(newItem) == 0
     }
@@ -34,13 +33,13 @@ private class WorkShopDiffUtilCallback() : DiffUtil.ItemCallback<WorkShopModel>(
 
 class WorkShopAdapter(val context: Context, val listener: EventListener) : RecyclerView.Adapter<WorkShopAdapter.ViewHolder>() {
     private val asyncListDiffer = AsyncListDiffer(
-        this,
-        WorkShopDiffUtilCallback()
+            this,
+            WorkShopDiffUtilCallback()
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.work_shop_item, parent, false)
+                .inflate(R.layout.work_shop_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -59,7 +58,7 @@ class WorkShopAdapter(val context: Context, val listener: EventListener) : Recyc
     }
 
     inner class ViewHolder(
-        val view: View
+            val view: View
     ) : RecyclerView.ViewHolder(view) {
 
         private val mName = view.findViewById<TextView>(R.id.tv_name)
@@ -77,7 +76,7 @@ class WorkShopAdapter(val context: Context, val listener: EventListener) : Recyc
         }
     }
 
-    interface EventListener{
+    interface EventListener {
         fun onWorkshopClicked(workShopModel: WorkShopModel)
     }
 }

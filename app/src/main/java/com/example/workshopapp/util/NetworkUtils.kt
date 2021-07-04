@@ -3,9 +3,6 @@ package com.example.workshopapp.util
 import android.content.Context
 import android.net.ConnectivityManager
 
-
-
-
 class NetworkUtils {
     companion object {
 

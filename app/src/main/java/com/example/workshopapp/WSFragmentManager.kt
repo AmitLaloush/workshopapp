@@ -10,7 +10,7 @@ class WSFragmentManager(private val supportManager: FragmentManager) {
 
 
     fun displayWorkShopDetails(workShop: WorkShopModel) = replaceFragmentAndAddToBackStack(
-        WorkShopDetails.newInstance(workShop)
+            WorkShopDetails.newInstance(workShop)
     )
 
     fun displayWorkShopList() = replaceFragmentAndAddToBackStack(

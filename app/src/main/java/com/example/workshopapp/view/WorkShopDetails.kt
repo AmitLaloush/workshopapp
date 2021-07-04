@@ -2,7 +2,6 @@ package com.example.workshopapp.view
 
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,8 +9,8 @@ import android.widget.TextView
 import android.widget.VideoView
 import androidx.fragment.app.Fragment
 import com.example.workshopapp.MainActivity
-import com.example.workshopapp.model.WorkShopModel
 import com.example.workshopapp.R
+import com.example.workshopapp.model.WorkShopModel
 
 
 class WorkShopDetails : Fragment() {
@@ -32,8 +31,8 @@ class WorkShopDetails : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_work_shop_details, container, false)
@@ -41,7 +40,7 @@ class WorkShopDetails : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val viewModel =  (activity as MainActivity).getWorkshopViewModel()
+        val viewModel = (activity as MainActivity).getWorkshopViewModel()
         viewModel.setAppTitle(SCREEN_TITLE)
 
         initUI(view)
@@ -75,12 +74,13 @@ class WorkShopDetails : Fragment() {
     companion object {
         private const val ARG_WORKSHOP = "argWorkshop"
         private const val SCREEN_TITLE = "Workshop details"
+
         @JvmStatic
         fun newInstance(workshop: WorkShopModel) =
-            WorkShopDetails().apply {
-                arguments = Bundle().apply {
-                    putParcelable(ARG_WORKSHOP, workshop)
+                WorkShopDetails().apply {
+                    arguments = Bundle().apply {
+                        putParcelable(ARG_WORKSHOP, workshop)
+                    }
                 }
-            }
     }
 }

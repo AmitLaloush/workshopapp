@@ -1,18 +1,16 @@
 package com.example.workshopapp
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.workshopapp.model.WorkShopModel
-import com.example.workshopapp.utils.Resource
 import com.example.workshopapp.view.WorkShopList
 
 class MainActivity : AppCompatActivity(), WorkShopList.EventListener {
 
     private lateinit var viewModel: MainViewModel
     val mFragmentManager = WSFragmentManager(supportFragmentManager)
+
     companion object {
         const val TAG = "MA_TAG"
     }
@@ -32,11 +30,11 @@ class MainActivity : AppCompatActivity(), WorkShopList.EventListener {
 
     fun getWorkshopViewModel() = viewModel
 
-    private fun openWorkShopDetails(workShop: WorkShopModel){
+    private fun openWorkShopDetails(workShop: WorkShopModel) {
         mFragmentManager.displayWorkShopDetails(workShop)
     }
 
-    private fun openWorkShopList(){
+    private fun openWorkShopList() {
         mFragmentManager.displayWorkShopList()
     }
 

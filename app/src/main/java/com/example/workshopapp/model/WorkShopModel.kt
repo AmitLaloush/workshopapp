@@ -6,28 +6,28 @@ import com.google.gson.annotations.SerializedName
 
 
 class WorkShopModel(
-    @SerializedName("name") var name : String?,
-    @SerializedName("image") var image : String?,
-    @SerializedName("description") var description : String?,
-    @SerializedName("text") var text : String?,
-    @SerializedName("video") var video : String?
-) : Comparable<WorkShopModel>, Parcelable{
+        @SerializedName("name") var name: String?,
+        @SerializedName("image") var image: String?,
+        @SerializedName("description") var description: String?,
+        @SerializedName("text") var text: String?,
+        @SerializedName("video") var video: String?
+) : Comparable<WorkShopModel>, Parcelable {
 
 
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString()
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString(),
+            parcel.readString()
     )
 
     override fun compareTo(other: WorkShopModel): Int {
         if (name == other.name &&
-            image == other.image &&
-            description == other.description &&
-            text == other.text &&
-            video == other.video)
+                image == other.image &&
+                description == other.description &&
+                text == other.text &&
+                video == other.video)
             return 0
         return -1
     }

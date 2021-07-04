@@ -1,7 +1,6 @@
-package com.example.countryapp.network
+package com.example.workshopapp.network
 
 import com.example.workshopapp.util.NetworkUtils.Companion.BASE_URL
-import com.example.workshopapp.network.ApiServices
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

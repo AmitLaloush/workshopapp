@@ -41,9 +41,10 @@ class WorkShopList : Fragment(), WorkShopAdapter.EventListener {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
     }
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_work_shop_list, container, false)
@@ -51,7 +52,7 @@ class WorkShopList : Fragment(), WorkShopAdapter.EventListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel =  (activity as MainActivity).getWorkshopViewModel()
+        viewModel = (activity as MainActivity).getWorkshopViewModel()
         viewModel.setAppTitle(SCREEN_TITLE)
         initUI(view)
 
@@ -71,9 +72,9 @@ class WorkShopList : Fragment(), WorkShopAdapter.EventListener {
                     hideProgressBar()
                     response.message?.let { message ->
                         Toast.makeText(
-                            mContext.applicationContext,
-                            "Something went wrong",
-                            Toast.LENGTH_SHORT
+                                mContext.applicationContext,
+                                "Something went wrong",
+                                Toast.LENGTH_SHORT
                         ).show()
                         Log.e(TAG, "An error occured: $message")
                     }
@@ -112,9 +113,8 @@ class WorkShopList : Fragment(), WorkShopAdapter.EventListener {
     }
 
     companion object {
-        private  const val TAG = "WorkshopTAG"
+        private const val TAG = "WorkshopTAG"
         private const val SCREEN_TITLE = "Workshop List"
-
     }
 
     override fun onWorkshopClicked(workShopModel: WorkShopModel) {
@@ -131,7 +131,7 @@ class WorkShopList : Fragment(), WorkShopAdapter.EventListener {
         inflater.inflate(R.menu.search_option_menu, menu)
         val item: MenuItem = menu.findItem(R.id.action_search)
         val searchView = SearchView(
-            (mContext as MainActivity).supportActionBar!!.themedContext
+                (mContext as MainActivity).supportActionBar!!.themedContext
         )
 
         item.setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW or MenuItem.SHOW_AS_ACTION_IF_ROOM)
@@ -142,7 +142,7 @@ class WorkShopList : Fragment(), WorkShopAdapter.EventListener {
             }
 
             override fun onQueryTextChange(query: String): Boolean {
-                Handler(Looper.getMainLooper()).postDelayed({viewModel.displayCurrentList(query)},300)
+                Handler(Looper.getMainLooper()).postDelayed({ viewModel.displayCurrentList(query) }, 300)
                 return true
             }
         })

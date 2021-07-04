@@ -1,6 +1,4 @@
-package com.example.countryapp.network
-
-//import org.greenrobot.eventbus.EventBus
+package com.example.workshopapp.network
 
 class Repository {
 
@@ -8,7 +6,7 @@ class Repository {
         const val TAG = "REPOSITORY"
     }
 
-    suspend fun getAllCountries()  = RestClient.service.getAllWorkShop()
+    suspend fun getAllCountries() = RestClient.service.getAllWorkShop()
 
 
 }
