@@ -52,6 +52,7 @@ class WorkShopList : Fragment(), WorkShopAdapter.EventListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel =  (activity as MainActivity).getWorkshopViewModel()
+        viewModel.setAppTitle(SCREEN_TITLE)
         initUI(view)
 
         initWorkShopRecyclerView()
@@ -112,6 +113,7 @@ class WorkShopList : Fragment(), WorkShopAdapter.EventListener {
 
     companion object {
         private  const val TAG = "WorkshopTAG"
+        private const val SCREEN_TITLE = "Workshop List"
 
     }
 

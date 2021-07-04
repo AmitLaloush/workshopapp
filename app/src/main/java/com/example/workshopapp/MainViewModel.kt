@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.workshopapp.model.WorkShopModel
 import com.example.countryapp.network.Repository
@@ -16,15 +17,24 @@ import retrofit2.Response
 
 class MainViewModel(val context: Context): ViewModel() {
     private val workShopLiveData: MutableLiveData<Resource<List<WorkShopModel>>> = MutableLiveData()
+    private val appTitleLiveData: MutableLiveData<String> = MutableLiveData()
     private val workshopList = mutableListOf<WorkShopModel>()
 
     companion object {
         const val TAG = "MainViewModel"
+
+        class WorkShopViewModelProviderFactory(val context: Context) : ViewModelProvider.Factory {
+            override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                return MainViewModel(context) as T
+            }
+        }
     }
 
-    fun getWorkShopListObserver(): MutableLiveData<Resource<List<WorkShopModel>>> {
-        return workShopLiveData
-    }
+    fun getWorkShopListObserver(): MutableLiveData<Resource<List<WorkShopModel>>> = workShopLiveData
+
+    fun setAppTitle(title:String) = appTitleLiveData.postValue(title)
+
+    fun getScreenTitle(): MutableLiveData<String> = appTitleLiveData
 
     fun getWorkShopData() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -62,4 +72,8 @@ class MainViewModel(val context: Context): ViewModel() {
         }
 
     }
+
+
+
+
 }

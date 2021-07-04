@@ -1,17 +1,13 @@
 package com.example.workshopapp
 
-import android.app.SearchManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.PersistableBundle
 import android.util.Log
-import android.view.Menu
-import androidx.appcompat.widget.SearchView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.workshopapp.model.WorkShopModel
+import com.example.workshopapp.utils.Resource
 import com.example.workshopapp.view.WorkShopList
-import com.example.workshopapp.view.WorkShopViewModelProviderFactory
 
 class MainActivity : AppCompatActivity(), WorkShopList.EventListener {
 
@@ -25,9 +21,12 @@ class MainActivity : AppCompatActivity(), WorkShopList.EventListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val viewModelProviderFactory = WorkShopViewModelProviderFactory(this)
+        val viewModelProviderFactory = MainViewModel.Companion.WorkShopViewModelProviderFactory(this)
         viewModel = ViewModelProvider(this, viewModelProviderFactory).get(MainViewModel::class.java)
 
+        viewModel.getScreenTitle().observe(this, { title ->
+            supportActionBar?.title = title
+        })
         openWorkShopList()
     }
 

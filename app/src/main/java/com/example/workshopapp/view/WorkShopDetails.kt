@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.VideoView
 import androidx.fragment.app.Fragment
+import com.example.workshopapp.MainActivity
 import com.example.workshopapp.model.WorkShopModel
 import com.example.workshopapp.R
 
@@ -40,6 +41,8 @@ class WorkShopDetails : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val viewModel =  (activity as MainActivity).getWorkshopViewModel()
+        viewModel.setAppTitle(SCREEN_TITLE)
 
         initUI(view)
         workshop?.let {
@@ -71,7 +74,7 @@ class WorkShopDetails : Fragment() {
 
     companion object {
         private const val ARG_WORKSHOP = "argWorkshop"
-
+        private const val SCREEN_TITLE = "Workshop details"
         @JvmStatic
         fun newInstance(workshop: WorkShopModel) =
             WorkShopDetails().apply {
